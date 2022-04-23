@@ -32,3 +32,33 @@ dbConn.connect(function (err) {
     console.log(`Server is listening on port ${PORT}`);
   });
 });
+
+
+app.post('/generateQnA', (req, res) => {
+     
+  const transcript = req.body.transcript;
+  console.log(req.body.transcrpt)
+
+  // call ml model
+    // pass context (full transcript)
+    // [x] pass answer (select random sentence from trancript)
+  // return question
+  // return answer which is random sentence from transcript selected here [x]
+  
+
+})
+
+app.get('/user/library/:id', (req, res) => {
+   
+  const id = req.params.id;
+  
+  UserJournals.find({id:id}, (err, data) => {
+      if (err) {
+          res.status(500).send(err);
+      } else {
+          console.log(data[0])
+          res.status(201).send(data[0].library)
+      }
+  })
+
+})
