@@ -1,6 +1,7 @@
 # APP NAME
 
 ## List of Virtual Prizes
+
 - Sonr Challenge
 - RESPEC Challenge, 1st Place
 - HCL Challenge 1
@@ -12,17 +13,22 @@
 ## 💻 What it does
 
 ## ⚙️ How we built it
+
 - React.Js: For the frontend
-- Node.Js: For the backend
-- MySQL: For the database
+- Node.Js ans Express.Js: For the backend
+- Tailwind CSS: For the styling
 
 ## 💼 RESPEC Challenge
+
+For this year's RESPEC challenge, we built a website that allows users to answer some questions about the meetup which happened few weeks ago. This year's challange was to make a software or a tool that either: Promotes Accountability, Encourages Caring for others or the environment, or Boosts Teamwork amongst members.
 
 ## 📚 Research
 
 Research is paramount to gaining a full understanding of the user and their needs. Beyond our own experiences, we needed to dig deeper into the web, outside of our network, and find both organizations that could shed light on how better to help our targeted users as well as to conduct research into other similar applications or products. This was crucial to avoid re-inventing the wheel and wasting valuable time and resources. Here are a few of the resources that were helpful to us:
 
 - https://www.sciencedirect.com/science/article/pii/S2590291120300905
+
+According to this article majority of the students preferred quiz (75.9%) and assignments (56.3%) at the end of every class for effective learning
 
 <!--
 ## 🔐 Best Blockchain Project Using Hedera
@@ -40,6 +46,8 @@ We are using Hedera’s testnet to make a make a decentralized **What we are usi
 - Any .tech domain name that is not already taken by Domain.com.
 
 ## 🧠 Challenges we ran into
+
+- Due to the difference in the time zone it was a bit difficult to collaborate with other developers in the team but we managed to get the project done in time. Complete the project in the given time frame.
 
 ## 🏅 Accomplishments that we're proud of
 
