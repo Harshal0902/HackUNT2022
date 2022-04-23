@@ -1,10 +1,20 @@
 # APP NAME
 
+## List of Virtual Prizes
+- Sonr Challenge
+- RESPEC Challenge, 1st Place
+- HCL Challenge 1
+- AssemblyAI Challenge
+- All MLH Challenges
+
 ## 💡 Inspiration
 
 ## 💻 What it does
 
 ## ⚙️ How we built it
+- React.Js: For the frontend
+- Node.Js: For the backend
+- MySQL: For the database
 
 ## 💼 RESPEC Challenge
 
@@ -12,7 +22,7 @@
 
 Research is paramount to gaining a full understanding of the user and their needs. Beyond our own experiences, we needed to dig deeper into the web, outside of our network, and find both organizations that could shed light on how better to help our targeted users as well as to conduct research into other similar applications or products. This was crucial to avoid re-inventing the wheel and wasting valuable time and resources. Here are a few of the resources that were helpful to us:
 
-- ADD LINKS HERE
+- https://www.sciencedirect.com/science/article/pii/S2590291120300905
 
 <!--
 ## 🔐 Best Blockchain Project Using Hedera
