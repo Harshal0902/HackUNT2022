@@ -48,11 +48,20 @@ We are using Hedera’s testnet to make a make a decentralized **What we are usi
 ## 🧠 Challenges we ran into
 
 - Due to the difference in the time zone it was a bit difficult to collaborate with other developers in the team but we managed to get the project done in time. Complete the project in the given time frame.
+- Implementing the speech-to-text feature was a bit tricky but we managed to get it done.
 
 ## 🏅 Accomplishments that we're proud of
+
+- Completing the project in the given time frame.
+- Implementing the speech-to-text feature.
 
 ## 📖 What we learned
 
 - Collaboration with other developers.
+- How to build a full stack application.
 
 ## 🚀 What's next for APP NAME
+
+- Making a mobile app.
+- Improving the accuracy of the speech-to-text feature.
+- Deploying the app to the production server.
