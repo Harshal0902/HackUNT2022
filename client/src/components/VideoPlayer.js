@@ -183,7 +183,7 @@ const VideoPlayer = () => {
                             </div>
                         </div>
 
-                        <div className="opacity-25 fixed inset-0 z-40 h-screen bg-black md:hidden"></div>
+                        <div className="opacity-25 fixed inset-0 z-40 h-screen bg-black"></div>
                     </div>
                 ) : null}
 
