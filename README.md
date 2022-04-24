@@ -2,7 +2,14 @@
 
 ## 💡 Inspiration
 
+In the era of a pandemic, it is harder than ever to connect with your co-workers. When things are Zoom it's just an excuse to be just less curious. People pay less attention to Zoom than in in-person meetings. And many companies suffer as a result. To tackle this problem we are creating a new way to connect with your co-workers. Our goal of the project is to overcome communication on zoom via interactive media chatroom.
+
 ## 💻 What it does
+
+- PACT is a web application where you have to answer few questions based to the meeting hosted few minuets ago
+- This will boosting teamwork amongst coworkers
+- This will help the employees to get engaing smalltalks between coworkers in virtual meetings
+- This will help the employees across the country to get a better understanding of the company culture
 
 ## ⚙️ How we built it
 
