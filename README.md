@@ -2,14 +2,15 @@
 
 ## 💡 Inspiration
 
-In the era of a pandemic, it is harder than ever to connect with your co-workers. When things are Zoom it's just an excuse to be just less curious. People pay less attention to Zoom than in in-person meetings. And many companies suffer as a result. To tackle this problem we are creating a new way to connect with your co-workers. Our goal of the project is to overcome communication on zoom via interactive media chatroom.
+In the era of a pandemic, it is harder than ever to connect with your co-workers. When things are Zoom it's just an excuse to be just less curious. People pay less attention to Zoom than in in-person meetings. And many companies suffer as a result from a culture and productivity standpoint. To tackle this problem we are creating a new way to connect with your co-workers. Our goal of the project is to overcome poor communication on zoom via interactive media chatroom.
 
 ## 💻 What it does
 
-- PACT is a web application where you have to answer few questions based to the meeting hosted few minuets ago
-- This will boosting teamwork amongst coworkers
-- This will help the employees to get engaing smalltalks between coworkers in virtual meetings
-- This will help the employees across the country to get a better understanding of the company culture
+- PACT is a video-conferencing application that occasionally prompts users to answer ML-generated questions based on the meeting topics/discussion
+  -PACT is also an automatic note-taker: it listens to and records action items from the meeting
+- This will boost teamwork and inclusion among coworkers by ensuring that everyone is paying attention to each other's voices
+- This will help the employees to have more engaging small talk with coworkers in virtual meetings.
+- This will help employees across the country to get a better understanding of the company culture.
 
 ## ⚙️ How we built it
 
@@ -18,10 +19,11 @@ In the era of a pandemic, it is harder than ever to connect with your co-workers
 - AssemblyAI: For the speech to text
 - Hedera: For smart contract
 - Tailwind CSS: For the styling
+  -HuggingFace T5: For machine learning (question generation)
 
 ## 💼 RESPEC Challenge
 
-For this year's RESPEC challenge, we built a website that allows users to answer some questions about the meetup which happened a few weeks ago. This year's challenge was to make software or a tool that either: Promotes Accountability, Encourages Caring for others or the environment or Boosts Teamwork amongst members.
+For this year's RESPEC challenge, we built a website that prompts users to answer some questions about the content of the meeting to check how attentive they are to their coworkers. This promotes teamwork because, in order for teams to work well together, members must be receptive to each other's ideas, perspectives, and backgrounds. PACT creates a safe space for coworkers to voice concerns and share their thoughts and have confidence that they're not just throwing their words into a void but rather, that their coworkers are hearing them out. Our app also promotes accountability because when a coworker suggests something (ie: "try to walk around the office so that you're not sitting in the same position all day long"), a note gets added to their action items/todo list automatically. As such, PACT encourages coworkers to look out for each other, using action items to keep each other accountable.
 
 ## 📚 Research
 
@@ -37,11 +39,11 @@ We are using Hedera’s testnet to make a decentralized **Contract Call and Cont
 
 ## 🍻 Dream Big and Create More Cheers with AB InBev - MLH
 
-- We dream to make this app available to all people who have limited access and want to learn new things and make their dream come true to learn.
+We dream to make this app available to all people who have limited access and want to learn new things and make their dream come true to learn.
 
 ## 🌐 Best Domain Name from Domain.com - MLH
 
-- Any .tech domain name that is not already taken by Domain.com.
+- pact.tech
 
 ## 🤖 Best Use of AssemblyAI
 
@@ -51,13 +53,13 @@ Note ⚠️ - The AssemblyAI was taking some time to process the audio and we ha
 
 ## 🧠 Challenges we ran into
 
-- Due to the difference in the time zone it was a bit difficult to collaborate with other developers in the team but we managed to get the project done in time. Complete the project in the given time frame.
-- Implementing the speech-to-text feature was a bit tricky but we managed to get it done.
+- Due to the difference in the time zone it was a bit difficult to collaborate but we managed to get the project done in time. Complete the project in the given time frame.
+- Implementing the speech-to-text and ML prediction feature was a bit tricky but we managed to get it done.
 
 ## 🏅 Accomplishments that we're proud of
 
 - Completing the project in the given time frame.
-- Implementing the speech-to-text feature.
+- Implementing the speech-to-text and ML prediction feature.
 
 ## 📖 What we learned
 
@@ -69,4 +71,4 @@ Note ⚠️ - The AssemblyAI was taking some time to process the audio and we ha
 
 - Making a mobile app.
 - Improving the accuracy of the speech-to-text feature.
-- Deploying the app to the production server.
+- Deploying the app to the web.

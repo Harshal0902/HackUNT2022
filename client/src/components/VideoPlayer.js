@@ -1,9 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { Grid, Typography, Paper, makeStyles } from '@material-ui/core';
 import { SocketContext } from '../context/Context';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import fetch from "node-fetch";
 import { HiX } from "react-icons/hi";
+
+// For AssemblyAI
+import MicRecorder from "mic-recorder-to-mp3"
+import { Oval } from "react-loader-spinner"
+import axios from "axios"
+
+
+const APIKey = process.env.ASSEMBLY_AI_API_KEY;
+const assemblyAI = axios.create({
+    baseURL: "https://api.assemblyai.com/v2",
+    headers: {
+        authorization: APIKey,
+        "content-type": "application/json",
+        "transfer-encoding": "chunked",
+    },
+})
 
 const useStyles = makeStyles((theme) => ({
     video: {
@@ -150,6 +166,93 @@ const VideoPlayer = () => {
         return answer;
     }
 
+    // For AssemblyAI
+    // const recorder = useRef(null)
+    //   const audioPlayer = useRef(null)
+    //   const [blobURL, setBlobUrl] = useState(null)
+    //   const [audioFile, setAudioFile] = useState(null)
+    //   const [isRecording, setIsRecording] = useState(null)
+
+    //   useEffect(() => {
+    //     recorder.current = new MicRecorder({ bitRate: 128 })
+    //   }, [])
+
+    //   const startRecording = () => {
+    //     recorder.current.start().then(() => {
+    //       setIsRecording(true)
+    //     })
+    //   }
+
+    //   const stopRecording = () => {
+    //     recorder.current
+    //       .stop()
+    //       .getMp3()
+    //       .then(([buffer, blob]) => {
+    //         const file = new File(buffer, "audio.mp3", {
+    //           type: blob.type,
+    //           lastModified: Date.now(),
+    //         })
+    //         const newBlobUrl = URL.createObjectURL(blob)
+    //         setBlobUrl(newBlobUrl)
+    //         setIsRecording(false)
+    //         setAudioFile(file)
+    //       })
+    //       .catch((e) => console.log(e))
+    //   }
+
+    //   const [uploadURL, setUploadURL] = useState("")
+    //   const [transcriptID, setTranscriptID] = useState("")
+    //   const [transcriptData, setTranscriptData] = useState("")
+    //   const [transcript, setTranscript] = useState("")
+    //   const [isLoading, setIsLoading] = useState(false)
+
+    //   useEffect(() => {
+    //     if (audioFile) {
+    //       assemblyAI
+    //         .post("/upload", audioFile)
+    //         .then((res) => setUploadURL(res.data.upload_url))
+    //         .catch((err) => console.error(err))
+    //     }
+    //   }, [audioFile])
+
+    //   const submitTranscriptionHandler = () => {
+    //     assemblyAI
+    //       .post("/transcript", {
+    //         audio_url: uploadURL,
+    //       })
+    //       .then((res) => {
+    //         setTranscriptID(res.data.id)
+
+    //         checkStatusHandler()
+    //       })
+    //       .catch((err) => console.error(err))
+    //   }
+
+    //   const checkStatusHandler = async () => {
+    //     setIsLoading(true)
+    //     try {
+    //       await assemblyAI.get(`/transcript/${transcriptID}`).then((res) => {
+    //         setTranscriptData(res.data)
+    //       })
+    //     } catch (err) {
+    //       console.error(err)
+    //     }
+    //   }
+
+    //   useEffect(() => {
+    //     const interval = setInterval(() => {
+    //       if (transcriptData.status !== "completed" && isLoading) {
+    //         checkStatusHandler()
+    //       } else {
+    //         setIsLoading(false)
+    //         setTranscript(transcriptData.text)
+
+    //         clearInterval(interval)
+    //       }
+    //     }, 1000)
+    //     return () => clearInterval(interval)
+    //   })
+
     return (
 
         <div className='bg-gray-400 rounded-md p-4'>
@@ -174,6 +277,53 @@ const VideoPlayer = () => {
             </div>
 
             <div className='flex justify-center items-center flex-col'>
+
+                {/* For AssemblyAI
+            
+            <div>
+        <button
+          className='btn btn-primary'
+          onClick={startRecording}
+          disabled={isRecording}
+        >
+          Record
+        </button>
+        <button
+          className='btn btn-warning'
+          onClick={stopRecording}
+          disabled={!isRecording}
+        >
+          Stop
+        </button>
+      </div>
+      <audio ref={audioPlayer} src={blobURL} controls='controls' />
+      <button
+        className='btn btn-secondary'
+        onClick={submitTranscriptionHandler}
+      >
+        Submit for Transcription
+      </button>
+
+      {isLoading ? (
+        <div>
+          <Oval
+            ariaLabel='loading-indicator'
+            height={100}
+            width={100}
+            strokeWidth={5}
+            color='red'
+            secondaryColor='yellow'
+          />
+          <p className='text-center'>Is loading....</p>
+        </div>
+      ) : (
+        <div></div>
+      )}
+      {!isLoading && transcript && (
+        <div className='w-2/3 lg:w-1/3 mockup-code'>
+          <p className='p-6'>{transcript}</p>
+        </div>
+      )} */}
                 {/* <div className='text-2xl'>
                     <p>Microphone: {listening ? 'on' : 'off'}</p>
                 </div> */}
