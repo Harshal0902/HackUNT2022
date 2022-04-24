@@ -41,12 +41,19 @@ const VideoPlayer = () => {
 
     const [ex, setEx] = useState(0);
     const [ais, setAis] = useState([])
+    const [question, setQuestion] = useState("")
+    const [answerToCheck, setAnswerToCheck] = useState("")
+    const [quiz, setQuiz] = useState("")
+    const [correct, setCorrect] = useState("")
 
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
 
-    function actionItem(arg) {
+    function handleChange(event) {
+        setAnswerToCheck(event.target.value)
+    }
+    function actionItem() {
         console.log("AI")
         let inArg
         if (arg === 1) {
@@ -65,10 +72,32 @@ const VideoPlayer = () => {
             }
         })
     }
+    function checkAnswer() {
+        const gold1 = "everyone around me seems smarter than me it takes my co-workers half the time it takes me to get something done my manager also always gives me a disappointing look it's actually really discouraging and makes me feel out of place I just feel like I'm lacking the natural at ability everyone else has"
+        const gold2 = "I feel like my work life balance has really taken a toll since starting this job. It’s been really stressful. I don’t have time to spend with my family. We used to go on vacations twice a year and I don’t know when’s the next time I’ll even be able to go on vacation at this rate. I feel like I’m doing the work of 3 people. My boss is always assigning more work to me before I even finish earlier tasks. "
+        if (gold1.includes(answerToCheck) || answerToCheck.includes("discouraged, lacking")) {
+            setQuiz("Correct")
+        }
+        else if (gold2.includes(answerToCheck)) {
+            setQuiz("Correct")
+        }
+        else {
+            setQuiz("Incorrect")
+            if (ex === 1) {
+                setCorrect("Discouraged, Out of place")
+            }
+            else if (ex === 3) {
+                setCorrect("Work life balance has really taken a toll. It's been really stressful, ")
+            }
+        }
+
+        setAnswerToCheck("")
+    }
     async function submitTranscript() {
         setAis([])
-        // const inArg = "I feel like my work life balance has really taken a toll since starting this job. It’s been really stressful. I don’t have time to spend with my family. We used to go on vacations twice a year and I don’t know when’s the next time I’ll even be able to go on vacation at this rate. I feel like I’m doing the work of 3 people. My boss is always assigning more work to me before I even finish earlier tasks. "
+        setQuestion("")
         // everyone around me seems smarter than me it takes my co-workers half the time it takes me to get something done my manager also always gives me a disappointing look it's actually really discouraging and makes me feel out of place I just feel like I'm lacking the natural at ability everyone else has
+        // const inArg = "I feel like my work life balance has really taken a toll since starting this job. It’s been really stressful. I don’t have time to spend with my family. We used to go on vacations twice a year and I don’t know when’s the next time I’ll even be able to go on vacation at this rate. I feel like I’m doing the work of 3 people. My boss is always assigning more work to me before I even finish earlier tasks. "
 
         // A:  Q: how do you feel about the way your manager looks at you? discouraging and makes me feel out of place
         // A: I feel like my work life balance has really taken a toll since starting this job Q: how do you feel about your WLB
@@ -108,7 +137,16 @@ const VideoPlayer = () => {
         console.log(body)
         const result = await response.json();
         console.log(result)
-        const answer = result[0].generated_text;
+        let answer = result[0].generated_text;
+        answer = answer.replace(/[?=]/g, '');
+        answer = answer + "?"
+        answer = answer.replace("you", "they")
+        answer = answer.replace("your", "their")
+        answer = answer.replace("you", "them")
+        answer = answer.replace("I'm", "they're")
+        answer = answer.replace("I", "they")
+        answer = answer.replace("me", "them")
+        answer = answer.replace("my", "their")
         console.log(answer);
         return answer;
     }
@@ -140,8 +178,8 @@ const VideoPlayer = () => {
                 <div className='text-2xl'>
                     <p>Microphone: {listening ? 'on' : 'off'}</p>
                 </div>
-                <div className="flex flex-row space-x-3 my-2 text-white">
-                    <button className='bg-secondary px-3 py-2 rounded-md' onClick={SpeechRecognition.startListening}>Start</button>
+                <div className="flex flex-row space-x-3 my-2">
+                    <button className='bg-secondary px-3 py-2 rounded-md' onClick={() => {SpeechRecognition.startListening(); setQuestion(""); setAis([])}}>Start</button>
                     <button className='bg-secondary px-3 py-2 rounded-md' onClick={SpeechRecognition.stopListening}>Stop</button>
                     <button className='bg-secondary px-3 py-2 rounded-md' onClick={resetTranscript}>Reset</button>
                 </div>
@@ -187,6 +225,13 @@ const VideoPlayer = () => {
                     </div>
                 ) : null}
 
+                <p>{question} </p>
+                <button onClick={submitTranscript}> Submit</button>
+                <input value={answerToCheck} style={{ color: 'black'}} onChange={handleChange}></input>
+                <p> Quiz result: {quiz} </p>
+                <p> Correct answer: {correct} </p>
+                <button onClick={checkAnswer}> Check Answer</button>
+                {ais.map(ai => {return <div>-{ai}</div>})}
             </div>
 
         </div>
