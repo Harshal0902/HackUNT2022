@@ -45,14 +45,18 @@ const VideoPlayer = () => {
         return <span>Browser doesn't support speech recognition.</span>;
     }
 
-    function actionItem() {
+    function actionItem(arg) {
         console.log("AI")
-        setAis([])
-        const inArg = "I think you should really start taking breaks for example I suggest that every hour go take a walk around the office also make sure to communicate with the team when you're feeling overloaded so we can share the work."
-        // const inArg = "I think you should try to worry less about other people's opinions of you. And I would encourage you to remind yourself of how you're a great asset to the team. Tell yourself that you got hired here over many other candidates for a reason."
+        let inArg
+        if (arg === 1) {
+            inArg = "I think you should really start taking breaks for example I suggest that every hour go take a walk around the office also make sure to communicate with the team when you're feeling overloaded so we can share the work."
+        }
+        if (arg === 3) {
+            inArg = "I think you should try to worry less about other people's opinions of you and I would encourage you to remind yourself of how you're a great asset to the team just think about how you got hired here over many other candidates for a reason."
+        }
 
         // const x = "adfds+fsdf-sdf";
-        const separators = ["I think you should really", "for example I suggest that", "also make sure to"];
+        const separators = ["I think you should really", "for example I suggest that", "also make sure to", "I think you should try to", "and I would encourage you to", "just"];
         const tokens = inArg.split(new RegExp(separators.join('|'), 'g'));
         tokens.forEach(token => {
             if (token.length > 1) {
@@ -61,6 +65,7 @@ const VideoPlayer = () => {
         })        
     }
     async function submitTranscript() {
+        setAis([])
         // const inArg = "I feel like my work life balance has really taken a toll since starting this job. It’s been really stressful. I don’t have time to spend with my family. We used to go on vacations twice a year and I don’t know when’s the next time I’ll even be able to go on vacation at this rate. I feel like I’m doing the work of 3 people. My boss is always assigning more work to me before I even finish earlier tasks. "
         // everyone around me seems smarter than me it takes my co-workers half the time it takes me to get something done my manager also always gives me a disappointing look it's actually really discouraging and makes me feel out of place I just feel like I'm lacking the natural at ability everyone else has
 
@@ -72,7 +77,7 @@ const VideoPlayer = () => {
             setEx(1)
         }
         else if (ex === 1) {
-            actionItem()
+            actionItem(1)
             setEx(2)
             return
         }
@@ -81,7 +86,7 @@ const VideoPlayer = () => {
             setEx(3)
         }
         else if (ex === 3) {
-            actionItem()
+            actionItem(3)
             return
         }
         console.log(modTranscript)
