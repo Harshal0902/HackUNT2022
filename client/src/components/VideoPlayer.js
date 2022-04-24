@@ -40,24 +40,25 @@ const VideoPlayer = () => {
 
     const [ex, setEx] = useState(0);
     const [ais, setAis] = useState([])
+    const [question, setQuestion] = useState("")
 
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
 
-    function actionItem(arg) {
+    function actionItem() {
         console.log("AI")
-        let inArg
-        if (arg === 1) {
-            inArg = "I think you should really start taking breaks for example I suggest that every hour go take a walk around the office also make sure to communicate with the team when you're feeling overloaded so we can share the work."
-        }
-        if (arg === 3) {
-            inArg = "I think you should try to worry less about other people's opinions of you and I would encourage you to remind yourself of how you're a great asset to the team just think about how you got hired here over many other candidates for a reason."
-        }
+        setQuestion("")
+        // if (arg === 1) {
+            // }
+            // if (arg === 3) {
+                // inArg = "I think you should try to worry less about other people's opinions of you and I would encourage you to remind yourself of how you're a great asset to the team just think about how you got hired here over many other candidates for a reason."
+                // inArg = "I think you should really start taking breaks for example I suggest that every hour go take a walk around the office also make sure to communicate with the team when you're feeling overloaded so we can share the work."
+        // }
 
         // const x = "adfds+fsdf-sdf";
         const separators = ["I think you should really", "for example I suggest that", "also make sure to", "I think you should try to", "and I would encourage you to", "just"];
-        const tokens = inArg.split(new RegExp(separators.join('|'), 'g'));
+        const tokens = transcript.split(new RegExp(separators.join('|'), 'g'));
         tokens.forEach(token => {
             if (token.length > 1) {
                 setAis(curr => [...curr, token])
@@ -77,7 +78,7 @@ const VideoPlayer = () => {
             setEx(1)
         }
         else if (ex === 1) {
-            actionItem(1)
+            actionItem()
             setEx(2)
             return
         }
@@ -86,7 +87,7 @@ const VideoPlayer = () => {
             setEx(3)
         }
         else if (ex === 3) {
-            actionItem(3)
+            actionItem()
             return
         }
         console.log(modTranscript)
@@ -107,8 +108,16 @@ const VideoPlayer = () => {
         console.log(body)
         const result = await response.json();
         console.log(result)
-        const answer = result[0].generated_text;
+        let answer = result[0].generated_text;
+        answer = answer.replace(/[?=]/g, '');
+        answer = answer + "?"
+        answer = answer.replace("you", "they")
+        answer = answer.replace("your", "their")
+        answer = answer.replace("I", "they")
+        answer = answer.replace("my", "their")
         console.log(answer);
+        setQuestion(answer);
+        resetTranscript()
         return answer;
     }
 
@@ -144,6 +153,7 @@ const VideoPlayer = () => {
                     <button className='bg-secondary px-3 py-2 rounded-md' onClick={resetTranscript}>Reset</button>
                 </div>
                 <p className='text-xl'>{transcript}</p>
+                <p>{question} </p>
                 <button onClick={submitTranscript}> Submit</button>
                 {ais.map(ai => {return <div>-{ai}</div>})}
             </div>
