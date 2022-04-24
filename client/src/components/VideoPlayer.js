@@ -209,7 +209,7 @@ const VideoPlayer = () => {
                                     </div>
 
                                     <div className="grid place-items-center text-white text-2xl tracking-wider">
-                                        <p className='py-4'>{question} </p>
+                                        <p className='py-4 text-center'>{question} </p>
                                         <input className='py-4' value={answerToCheck} style={{ color: 'black' }} onChange={handleChange}></input>
                                         <p className='py-4'>Quiz result: {quiz} </p>
                                         {correct ? (
