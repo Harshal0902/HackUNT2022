@@ -45,6 +45,12 @@ We are using Hedera’s testnet to make a make a decentralized **What we are usi
 
 - Any .tech domain name that is not already taken by Domain.com.
 
+## 🤖 Best Use of AssemblyAI
+
+We are using AssemblyAI's APIs to convert the speech to text. The user can convert his speech to text in the chatroom. We use the /transcript endpoint to make a call to the API using the audio user generates and send the transcript back to the frontend of the application. We also use the profanity check API to remove curse words from being displayed on our application. Although we implemented the functionality to use AssemblyAI in the backend, we didn't use it in the frontend because we needed an immediate response which was not possible through the API.
+
+Note ⚠️ — The AssemblyAI was taking some time to process the audio and we had to wait for it to finish before we could send the transcript back to the frontend so we had to use react-speech-recognition for that.
+
 ## 🧠 Challenges we ran into
 
 - Due to the difference in the time zone it was a bit difficult to collaborate with other developers in the team but we managed to get the project done in time. Complete the project in the given time frame.

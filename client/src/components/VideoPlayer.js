@@ -182,7 +182,8 @@ const VideoPlayer = () => {
                     <button className='px-3 py-2 rounded-md' onClick={SpeechRecognition.stopListening}>Stop</button>
                     <button className='px-3 py-2 rounded-md' onClick={resetTranscript}>Reset</button>
                 </div>
-                <p className='text-xl'>{transcript}</p>
+
+                <p className='text-xl max-w-2xl'>{transcript}</p>
 
                 <div>
                     <button className='my-2 px-4 py-2 text-gray-400 text-2xl rounded-2xl' onClick={() => { setShowModal(true); submitTranscript(); }}> Submit</button>
@@ -218,9 +219,9 @@ const VideoPlayer = () => {
                                             </div>
                                         ) : null}
 
-                                        <button onClick={checkAnswer}> Check Answer</button>
+                                        <button className='my-2 px-4 py-2 bg-primary text-white text-2xl rounded-2xl' onClick={checkAnswer}> Check Answer</button>
 
-                                        {ais.map(ai => { return <div className='py-1'>-{ai}</div> })}
+                                        {ais.map(ai => { return <div className='py-1 text-center'>-{ai}</div> })}
 
                                     </div>
 
