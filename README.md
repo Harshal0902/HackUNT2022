@@ -1,13 +1,5 @@
 # APP NAME
 
-## List of Virtual Prizes
-
-- Sonr Challenge
-- RESPEC Challenge, 1st Place
-- HCL Challenge 1
-- AssemblyAI Challenge
-- All MLH Challenges
-
 ## 💡 Inspiration
 
 ## 💻 What it does
@@ -16,6 +8,8 @@
 
 - React.Js: For the frontend
 - Node.Js ans Express.Js: For the backend
+- AssemblyAI: For the spech to text
+- Hedera: For smart contract
 - Tailwind CSS: For the styling
 
 ## 💼 RESPEC Challenge
@@ -30,12 +24,9 @@ Research is paramount to gaining a full understanding of the user and their need
 
 According to this article majority of the students preferred quiz (75.9%) and assignments (56.3%) at the end of every class for effective learning
 
-<!--
-## 🔐 Best Blockchain Project Using Hedera
+## 🔐 Best Blockchain Project Using Hedera - MLH
 
-We are using Hedera’s testnet to make a make a decentralized **What we are using it for** . Hedera is a decentralized public network that utilizes the Hashgraph consensus algorithm to overcome the traditional limitations of blockchain and allow one to create the next era of fast, fair, and secure applications.
-
--->
+We are using Hedera’s testnet to make a make a decentralized **Contract Call and Contract Deploy** . Hedera is a decentralized public network that utilizes the Hashgraph consensus algorithm to overcome the traditional limitations of blockchain and allow one to create the next era of fast, fair, and secure applications.
 
 ## 🍻 Dream Big and Create More Cheers with AB InBev - MLH
 
@@ -49,7 +40,7 @@ We are using Hedera’s testnet to make a make a decentralized **What we are usi
 
 We are using AssemblyAI's APIs to convert the speech to text. The user can convert his speech to text in the chatroom. We use the /transcript endpoint to make a call to the API using the audio user generates and send the transcript back to the frontend of the application. We also use the profanity check API to remove curse words from being displayed on our application. Although we implemented the functionality to use AssemblyAI in the backend, we didn't use it in the frontend because we needed an immediate response which was not possible through the API.
 
-Note ⚠️ — The AssemblyAI was taking some time to process the audio and we had to wait for it to finish before we could send the transcript back to the frontend so we had to use react-speech-recognition for that.
+Note ⚠️ - The AssemblyAI was taking some time to process the audio and we had to wait for it to finish before we could send the transcript back to the frontend so we had to use react-speech-recognition for that.
 
 ## 🧠 Challenges we ran into
 
@@ -65,6 +56,7 @@ Note ⚠️ — The AssemblyAI was taking some time to process the audio and we 
 
 - Collaboration with other developers.
 - How to build a full stack application.
+- How to implement Hedera
 
 ## 🚀 What's next for APP NAME
 
