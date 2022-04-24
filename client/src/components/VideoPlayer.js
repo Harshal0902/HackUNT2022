@@ -55,17 +55,16 @@ const VideoPlayer = () => {
     }
     function actionItem() {
         console.log("AI")
-        let inArg
-        if (arg === 1) {
-            inArg = "I think you should really start taking breaks for example I suggest that every hour go take a walk around the office also make sure to communicate with the team when you're feeling overloaded so we can share the work."
-        }
-        if (arg === 3) {
-            inArg = "I think you should try to worry less about other people's opinions of you and I would encourage you to remind yourself of how you're a great asset to the team just think about how you got hired here over many other candidates for a reason."
-        }
+        // if (arg === 3) {
+        //     inArg = "I think you should try to worry less about other people's opinions of you and I would encourage you to remind yourself of how you're a great asset to the team just think about how you got hired here over many other candidates for a reason."
+        // }
+        // if (arg === 1) {
+        //     inArg = "I think you should really start taking breaks for example I suggest that every hour go take a walk around the office also make sure to communicate with the team when you're feeling overloaded so we can share the work."
+        // }
 
         // const x = "adfds+fsdf-sdf";
         const separators = ["I think you should really", "for example I suggest that", "also make sure to", "I think you should try to", "and I would encourage you to", "just"];
-        const tokens = inArg.split(new RegExp(separators.join('|'), 'g'));
+        const tokens = transcript.split(new RegExp(separators.join('|'), 'g'));
         tokens.forEach(token => {
             if (token.length > 1) {
                 setAis(curr => [...curr, token])
@@ -145,9 +144,9 @@ const VideoPlayer = () => {
         answer = answer.replace("you", "them")
         answer = answer.replace("I'm", "they're")
         answer = answer.replace("I", "they")
-        answer = answer.replace("me", "them")
         answer = answer.replace("my", "their")
         console.log(answer);
+        setQuestion(answer)
         return answer;
     }
 
@@ -186,7 +185,7 @@ const VideoPlayer = () => {
                 <p className='text-xl'>{transcript}</p>
 
                 <div>
-                    <button className='my-2 px-4 py-2 bg-secondary text-white text-2xl rounded-2xl' onClick={() => setShowModal(true)}> Submit</button>
+                    <button className='my-2 px-4 py-2 bg-secondary text-white text-2xl rounded-2xl' onClick={() => {setShowModal(true); submitTranscript();}}> Submit</button>
 
                     {/* <button className='my-2 px-4 py-2 bg-secondary text-white text-2xl rounded-2xl'
                         onClick={submitTranscript}
@@ -201,7 +200,14 @@ const VideoPlayer = () => {
                                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-secondary outline-none focus:outline-none">
                                     <div className="flex items-start justify-between p-5 border-solid rounded-t text-white">
                                         <div className="text-2xl font-base tracking-wide">
-                                            Answer Quetions
+                                            PACT Time!
+                                            <p>{question} </p>
+                                            <input value={answerToCheck} style={{ color: 'black'}} onChange={handleChange}></input>
+                                            <p> Quiz result: {quiz} </p>
+                                            <p> Correct answer: {correct} </p>
+                                            <button onClick={checkAnswer}> Check Answer</button>
+                                            {ais.map(ai => {return <div>-{ai}</div>})}
+
                                         </div>
 
                                         <button className="absolute right-6" onClick={() => setShowModal(false)} aria-hidden="false" aria-label="button">
@@ -214,24 +220,15 @@ const VideoPlayer = () => {
                                         <div className="inline-flex w-64 h-1 bg-indigo-500 rounded-full"></div>
                                     </div>
 
-                                    <div className="grid place-items-center text-xl py-2 gap-2 w-full mb-4">
-                                        {ais.map(ai => { return <div>-{ai}</div> })}
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
 
                         <div className="opacity-25 fixed inset-0 z-40 h-screen bg-black"></div>
                     </div>
-                ) : null}
-
-                <p>{question} </p>
-                <button onClick={submitTranscript}> Submit</button>
-                <input value={answerToCheck} style={{ color: 'black'}} onChange={handleChange}></input>
-                <p> Quiz result: {quiz} </p>
-                <p> Correct answer: {correct} </p>
-                <button onClick={checkAnswer}> Check Answer</button>
-                {ais.map(ai => {return <div>-{ai}</div>})}
+                ) : null}                
+                
             </div>
 
         </div>
