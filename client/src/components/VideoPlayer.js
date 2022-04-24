@@ -159,7 +159,7 @@ const VideoPlayer = () => {
                     <div>
                         <div className="flex overflow-x-hidden mr-20 w-screen items-center justify-center h-screen overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                         >
-                            <div className="relative my-6 mx-auto w-96">
+                            <div className="relative my-6 mx-auto w-256">
                                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-secondary outline-none focus:outline-none">
                                     <div className="flex items-start justify-between p-5 border-solid rounded-t text-white">
                                         <div className="text-2xl font-base tracking-wide">
