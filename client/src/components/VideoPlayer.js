@@ -174,18 +174,18 @@ const VideoPlayer = () => {
             </div>
 
             <div className='flex justify-center items-center flex-col'>
-                <div className='text-2xl'>
+                {/* <div className='text-2xl'>
                     <p>Microphone: {listening ? 'on' : 'off'}</p>
-                </div>
-                <div className="flex flex-row space-x-3 my-2">
-                    <button className='bg-secondary px-3 py-2 rounded-md' onClick={() => {SpeechRecognition.startListening(); setQuestion(""); setAis([])}}>Start</button>
-                    <button className='bg-secondary px-3 py-2 rounded-md' onClick={SpeechRecognition.stopListening}>Stop</button>
-                    <button className='bg-secondary px-3 py-2 rounded-md' onClick={resetTranscript}>Reset</button>
+                </div> */}
+                <div className="flex flex-row space-x-3 my-2 text-gray-400">
+                    <button className='px-3 py-2 rounded-md' onClick={() => { SpeechRecognition.startListening(); setQuestion(""); setAis([]) }}>Start</button>
+                    <button className='px-3 py-2 rounded-md' onClick={SpeechRecognition.stopListening}>Stop</button>
+                    <button className='px-3 py-2 rounded-md' onClick={resetTranscript}>Reset</button>
                 </div>
                 <p className='text-xl'>{transcript}</p>
 
                 <div>
-                    <button className='my-2 px-4 py-2 bg-secondary text-white text-2xl rounded-2xl' onClick={() => {setShowModal(true); submitTranscript();}}> Submit</button>
+                    <button className='my-2 px-4 py-2 text-gray-400 text-2xl rounded-2xl' onClick={() => { setShowModal(true); submitTranscript(); }}> Submit</button>
 
                     {/* <button className='my-2 px-4 py-2 bg-secondary text-white text-2xl rounded-2xl'
                         onClick={submitTranscript}
@@ -196,39 +196,42 @@ const VideoPlayer = () => {
                     <div>
                         <div className="flex overflow-x-hidden mr-20 w-screen items-center justify-center h-screen overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                         >
-                            <div className="relative my-6 mx-auto w-256">
-                                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-secondary outline-none focus:outline-none">
+                            <div className="relative my-6 mx-auto w-128">
+                                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-secondary outline-none focus:outline-none pb-8">
                                     <div className="flex items-start justify-between p-5 border-solid rounded-t text-white">
                                         <div className="text-2xl font-base tracking-wide">
                                             PACT Time!
-                                            <p>{question} </p>
-                                            <input value={answerToCheck} style={{ color: 'black'}} onChange={handleChange}></input>
-                                            <p> Quiz result: {quiz} </p>
-                                            <p> Correct answer: {correct} </p>
-                                            <button onClick={checkAnswer}> Check Answer</button>
-                                            {ais.map(ai => {return <div>-{ai}</div>})}
-
                                         </div>
 
                                         <button className="absolute right-6" onClick={() => setShowModal(false)} aria-hidden="false" aria-label="button">
                                             <HiX className="h-7 w-7" aria-hidden="false" />
                                         </button>
+                                    </div>
+
+                                    <div className="grid place-items-center text-white text-2xl tracking-wider">
+                                        <p className='py-4'>{question} </p>
+                                        <input className='py-4' value={answerToCheck} style={{ color: 'black' }} onChange={handleChange}></input>
+                                        <p className='py-4'>Quiz result: {quiz} </p>
+                                        {correct ? (
+                                            <div>
+                                                <p className='py-4'>Correct answer: {correct} </p>
+                                            </div>
+                                        ) : null}
+
+                                        <button onClick={checkAnswer}> Check Answer</button>
+
+                                        {ais.map(ai => { return <div className='py-1'>-{ai}</div> })}
 
                                     </div>
 
-                                    <div className="grid justify-center">
-                                        <div className="inline-flex w-64 h-1 bg-indigo-500 rounded-full"></div>
-                                    </div>
-
-                                    
                                 </div>
                             </div>
                         </div>
 
                         <div className="opacity-25 fixed inset-0 z-40 h-screen bg-black"></div>
                     </div>
-                ) : null}                
-                
+                ) : null}
+
             </div>
 
         </div>
